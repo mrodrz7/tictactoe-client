@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Martin's Tic Tac Toe</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <link rel = "stylesheet" type = "text/css" href = "assets/styles/index.css" />
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <h1>Martin's Tic Tac Toe Game</h1>
+
+      <form id="sign-up" class="border">
+      <fieldset>
+        <legend>Create Username</legend>
+        <input type="text" name="credentials[username]" placeholder="Username">
+        <input type="password" name="credentials[password]" placeholder="Password">
+        <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+        <input type="submit" value="Sign up!">
+      </fieldset>
+      </form>
+
+    <form id="sign-in" class="border">
+      <fieldset>
+        <legend>Sign-In!</legend>
+        <input type="text" name="credentials[username]" placeholder="Username">
+        <input type="password" name="credentials[password]" placeholder="Password">
+        <input type="submit" value="Sign In!">
+    </fieldset>
+    </form>
+      <hr>
+
+      <div id="showgrid">
+        <div class="row">
+          <div class="column">0</div>
+          <div class="column">1</div>
+          <div class="column">2</div>
+        </div>
+        <div class="row">
+          <div class="column">3</div>
+          <div class="column">4</div>
+          <div class="column">5</div>
+        </div>
+        <div class="row">
+          <div class="column">6</div>
+          <div class="column">7</div>
+          <div class="column">8</div>
+        </div>
+      </div>
+
+        <h3>Score</h3>
+
+    <form id="sign-out">
+      <fieldset>
+        <legend>Sign Out</legend>
+        <input type="submit" value="Sign Out">
+      </fieldset>
+    </form>
+
+  </body>
+</html>

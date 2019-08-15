@@ -1,0 +1,25 @@
+@import '~bootstrap/scss/bootstrap';
+
+$alt-color: $cyan;
+$body-bg-color: $gray-200;
+$font-color: $light;
+
+.column {
+  display: inline;
+  float: left;
+  height: 230px;
+  width: 230px;
+}
+
+div.column {
+  border-style: solid;
+  border-width: 1px;
+  }
+
+h1, h3, legend {
+  text-align: center;
+}
+
+#showgrid {
+  text-align: center;
+}
