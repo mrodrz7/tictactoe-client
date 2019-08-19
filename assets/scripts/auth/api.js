@@ -3,11 +3,21 @@
 const config = require('../config.js')
 const store = require('../store.js')
 
+/*
+const createGame = function () {
+  return $.ajax({
+    url: config.apiUrl + '/new-game',
+    method:'POST',
+    data: data
+  })
+}
+*/
+
 const signUp = function (data) {
   return $.ajax({
-    url: config.apiUrl + '/signup',
+    url: config.apiUrl + '/sign-up',
     method: 'POST',
-    data
+    data: data
   })
 }
 
@@ -29,10 +39,20 @@ const signOut = function () {
   })
 }
 
-
+const changePassword = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/change-password',
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
 
 module.exports = {
   signUp,
   signIn,
-  signOut
+  signOut,
+  changePassword
 }

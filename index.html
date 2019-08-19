@@ -18,7 +18,7 @@
       <form id="sign-up" class="border">
       <fieldset>
         <legend>Create Username</legend>
-        <input type="text" name="credentials[username]" placeholder="Username">
+        <input type="text" name="credentials[email]" placeholder="Username">
         <input type="password" name="credentials[password]" placeholder="Password">
         <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
         <input type="submit" value="Sign up!">
@@ -28,30 +28,47 @@
     <form id="sign-in" class="border">
       <fieldset>
         <legend>Sign-In!</legend>
-        <input type="text" name="credentials[username]" placeholder="Username">
+        <input type="text" name="credentials[email]" placeholder="Username">
         <input type="password" name="credentials[password]" placeholder="Password">
-        <input type="submit" value="Sign In!">
+        <input type="submit" onclick="clickFunction()" value="Sign In!">
     </fieldset>
     </form>
       <hr>
+    <form id="change-password" class="border">
+      <fieldset>
+        <legend>Change Password</legend>
+        <input type="password" name="passwords[old]" placeholder="Current Password">
+        <input type="password" name="passwords[new]" placeholder="New Password">
+        <input type="submit" name="Change Password" placeholder="Change Password">
+      </fieldset>
+    </form>
+    <hr>
+    <form id="sign-out">
+      <fieldset>
+        <legend>Sign Out</legend>
+        <input type="submit" value="Sign Out">
+      </fieldset>
+    </form>
+
 
       <div id="showgrid">
         <div class="row">
-          <div class="column">0</div>
-          <div class="column">1</div>
-          <div class="column">2</div>
+          <div id="0" class="column"></div>
+          <div id="1" class="column"></div>
+          <div id="2" class="column"></div>
         </div>
         <div class="row">
-          <div class="column">3</div>
-          <div class="column">4</div>
-          <div class="column">5</div>
+          <div id="3" class="column"></div>
+          <div id="4" class="column"></div>
+          <div id="5" class="column"></div>
         </div>
         <div class="row">
-          <div class="column">6</div>
-          <div class="column">7</div>
-          <div class="column">8</div>
+          <div id="6" class="column"></div>
+          <div id="7" class="column"></div>
+          <div id="8" class="column"></div>
         </div>
       </div>
+      <hr>
 
         <h3>Score</h3>
 
@@ -61,6 +78,6 @@
         <input type="submit" value="Sign Out">
       </fieldset>
     </form>
-
+  <script src="script.js"></script>
   </body>
 </html>
