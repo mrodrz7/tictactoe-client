@@ -50,9 +50,41 @@ const changePassword = function (data) {
   })
 }
 
+const createGame = function () {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: ''
+  })
+}
+
+const makeMove = function (player, index) {
+  return $.ajax({
+    url: config.apiUrl + '/games/' + store.game.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: index,
+          value: player
+        },
+        over: store.gameOver
+      }
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   signOut,
-  changePassword
+  changePassword,
+  createGame,
+  makeMove
 }

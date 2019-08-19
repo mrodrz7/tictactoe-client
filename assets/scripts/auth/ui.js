@@ -31,9 +31,20 @@ const signOutSuccess = function (data) {
   console.error('signed out ran')
 }
 
+const createGameSuccess = function (data) {
+  store.game = data.game
+  console.log(data.game)
+}
+
+const onSuccessfulMove = function (data) {
+  store.game = data.game
+  console.log(data.game)
+}
 module.exports = {
   signUpSuccess,
   signUpFailure,
   signInSuccess,
-  signOutSuccess
+  signOutSuccess,
+  createGameSuccess,
+  onSuccessfulMove
 }

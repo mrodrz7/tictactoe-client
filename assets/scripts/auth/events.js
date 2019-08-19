@@ -44,20 +44,26 @@ const onChangePassword = function (event) {
     .catch(ui.onSignInFailure)
 }
 
+const onCreateGame = function (event) {
+  event.preventDefault()
+  api.createGame()
+    .then(ui.createGameSuccess)
+    .catch(ui.createGameFailure)
+}
 // Game Events below
 // playerOne can be reassigned
 const gridArray = ['', '', '', '', '', '', '', '', '']
 
-const winOptions = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 4, 8],
-  [2, 4, 6],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8]
-]
+// const winOptions = [
+//   [0, 1, 2],
+//   [3, 4, 5],
+//   [6, 7, 8],
+//   [0, 4, 8],
+//   [2, 4, 6],
+//   [0, 3, 6],
+//   [1, 4, 7],
+//   [2, 5, 8]
+// ]
 
 let playerOne = 'X'
 
@@ -77,6 +83,9 @@ const onClick = function () {
     gridArray[currentIndex] = playerOne
     console.log(gridArray)
     winner()
+    api.makeMove(playerOne, currentIndex)
+      .then(ui.onSuccessfulMove)
+      .catch(ui.onFailedMove)
     changePlayer()
   }
 }
@@ -118,5 +127,6 @@ module.exports = {
   onSignIn,
   onSignOut,
   onChangePassword,
-  onClick
+  onClick,
+  onCreateGame
 }
