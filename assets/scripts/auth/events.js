@@ -21,6 +21,22 @@ const onSignIn = function (event) {
   event.preventDefault()
   console.log('submitted sign-in!')
 
+  $('#create').click(function () {
+    $('#create-game').hide()
+  })
+
+  $('button').click(function () {
+    $('#sign-out').hide()
+  })
+
+  $('button').click(function () {
+    $('#change-password').hide()
+  })
+
+  $('button').click(function () {
+    $('#create-game').hide()
+  })
+
   const data = getFormFields(event.target)
   console.log('sign in data is', data)
 

@@ -4,14 +4,12 @@ const signUpSuccess = function () {
   $('#message').text('Signed up successfully')
   $('#message').removeClass()
   $('#message').addClass('success')
-  console.log('signUpSuccess ran')
 }
 
 const signUpFailure = function () {
   $('#message').text('Error on sign up')
   $('#message').removeClass()
   $('#message').addClass('failure')
-  console.error('signUpFailure ran')
 }
 
 const signInSuccess = function (data) {
@@ -19,7 +17,6 @@ const signInSuccess = function (data) {
   $('#message').text('Signed in successfully')
   $('#message').removeClass()
   $('#message').addClass('success')
-  console.log('signInSuccess ran', store.user)
 }
 
 const signOutSuccess = function (data) {
