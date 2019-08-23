@@ -21,22 +21,6 @@ const onSignIn = function (event) {
   event.preventDefault()
   console.log('submitted sign-in!')
 
-  $('#create').click(function () {
-    $('#create-game').hide()
-  })
-
-  $('button').click(function () {
-    $('#sign-out').hide()
-  })
-
-  $('button').click(function () {
-    $('#change-password').hide()
-  })
-
-  $('button').click(function () {
-    $('#create-game').hide()
-  })
-
   const data = getFormFields(event.target)
   console.log('sign in data is', data)
 
@@ -57,7 +41,7 @@ const onChangePassword = function (event) {
   const data = getFormFields(event.target)
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
-    .catch(ui.onSignInFailure)
+    .catch(ui.changePasswordFailure)
 }
 
 const onCreateGame = function (event) {
@@ -68,7 +52,7 @@ const onCreateGame = function (event) {
 }
 // Game Events below
 // playerOne can be reassigned
-const gridArray = ['', '', '', '', '', '', '', '', '']
+store.gridArray = ['', '', '', '', '', '', '', '', '']
 
 // const winOptions = [
 //   [0, 1, 2],
@@ -81,25 +65,25 @@ const gridArray = ['', '', '', '', '', '', '', '', '']
 //   [2, 5, 8]
 // ]
 
-let playerOne = 'X'
+store.playerOne = 'X'
 
 const changePlayer = function () {
-  if (playerOne === 'X') {
-    playerOne = 'O'
-  } else if (playerOne === 'O') {
-    playerOne = 'X'
+  if (store.playerOne === 'X') {
+    store.playerOne = 'O'
+  } else if (store.playerOne === 'O') {
+    store.playerOne = 'X'
   }
 }
 
 const onClick = function () {
   event.preventDefault()
   if ($(this).text() === '' && !store.gameOver) {
-    $(this).text(playerOne) // this element specifically
+    $(this).text(store.playerOne) // this element specifically
     const currentIndex = $(this).attr('id')
-    gridArray[currentIndex] = playerOne
-    console.log(gridArray)
+    store.gridArray[currentIndex] = store.playerOne
+    console.log(store.gridArray)
     winner()
-    api.makeMove(playerOne, currentIndex)
+    api.makeMove(store.playerOne, currentIndex)
       .then(ui.onSuccessfulMove)
       .catch(ui.onFailedMove)
     changePlayer()
@@ -107,16 +91,21 @@ const onClick = function () {
 }
 
 const winner = function () {
-  if ((gridArray[0] && gridArray[0] === gridArray[1] && gridArray[0] === gridArray[2]) ||
-      (gridArray[3] && gridArray[3] === gridArray[4] && gridArray[3] === gridArray[5]) ||
-      (gridArray[6] && gridArray[6] === gridArray[7] && gridArray[6] === gridArray[8]) ||
-      (gridArray[0] && gridArray[0] === gridArray[3] && gridArray[0] === gridArray[6]) ||
-      (gridArray[1] && gridArray[1] === gridArray[4] && gridArray[1] === gridArray[7]) ||
-      (gridArray[2] && gridArray[2] === gridArray[5] && gridArray[2] === gridArray[8]) ||
-      (gridArray[0] && gridArray[0] === gridArray[4] && gridArray[0] === gridArray[8]) ||
-      (gridArray[2] && gridArray[2] === gridArray[4] && gridArray[2] === gridArray[6])
+  if ((store.gridArray[0] && store.gridArray[0] === store.gridArray[1] && store.gridArray[0] === store.gridArray[2]) ||
+      (store.gridArray[3] && store.gridArray[3] === store.gridArray[4] && store.gridArray[3] === store.gridArray[5]) ||
+      (store.gridArray[6] && store.gridArray[6] === store.gridArray[7] && store.gridArray[6] === store.gridArray[8]) ||
+      (store.gridArray[0] && store.gridArray[0] === store.gridArray[3] && store.gridArray[0] === store.gridArray[6]) ||
+      (store.gridArray[1] && store.gridArray[1] === store.gridArray[4] && store.gridArray[1] === store.gridArray[7]) ||
+      (store.gridArray[2] && store.gridArray[2] === store.gridArray[5] && store.gridArray[2] === store.gridArray[8]) ||
+      (store.gridArray[0] && store.gridArray[0] === store.gridArray[4] && store.gridArray[0] === store.gridArray[8]) ||
+      (store.gridArray[2] && store.gridArray[2] === store.gridArray[4] && store.gridArray[2] === store.gridArray[6])
   ) {
-    console.log(playerOne + ' is the winner!')
+    $('#winner').text(store.playerOne + ' is the winner!')
+    store.gameOver = true
+  } else if (!store.gridArray.some(function (item) {
+    return item === ''
+  })) {
+    $('#winner').text('Draw!')
     store.gameOver = true
   }
 }

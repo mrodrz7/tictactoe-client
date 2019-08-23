@@ -33,8 +33,10 @@ div.column {
   width: 230px;
 }
 
-/*
-#showgrid {
-  visibility: hidden;
+.success {
+  color: green;
 }
-*/
+
+.failure {
+  color: red;
+}
