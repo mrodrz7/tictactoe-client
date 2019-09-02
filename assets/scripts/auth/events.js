@@ -106,7 +106,6 @@ const winner = function () {
   } else if (!store.gridArray.some(function (item) {
     return item === ''
   })) {
-    $('#winner').text('Drawvbvbvbv!')
     store.gameOver = true
   }
 }
