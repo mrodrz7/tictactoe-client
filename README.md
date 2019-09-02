@@ -13,7 +13,7 @@ or sign out.
 
 ## Technologies
 ```
-HTML & CSS - for formatting and styling UI
+HTML & CSS, Bootstrap - for formatting and styling UI
 Javascript - for game logic
 jQuery - for making API calls & events handlers
 Ajax - for making specific calls within jQuery to API
