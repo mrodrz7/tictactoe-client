@@ -21,6 +21,8 @@ const signInSuccess = function (data) {
   $('#sign-up').hide()
   $('#change-password').show()
   $('#create-game').show()
+  $('#sign-out').show()
+  $('#game-stats').show()
 }
 
 const signOutSuccess = function (data) {
@@ -37,6 +39,8 @@ const signOutSuccess = function (data) {
   $('#end').hide()
   $('.column').text('')
   $('#winner').text('')
+  $('#game-stats').hide()
+  $('#sign-out').hide()
   store.game = null
   store.gameOver = false
   store.playerOne = 'X'
@@ -55,6 +59,7 @@ const createGameSuccess = function (data) {
   $('#showgrid').show()
   $('#winner').text('')
   $('#message').text('')
+  $('#change-password').hide()
   store.gameOver = false
   store.playerOne = 'X'
   store.gridArray = ['', '', '', '', '', '', '', '', '']
@@ -88,6 +93,15 @@ const changePasswordFailure = function () {
   $('#message').removeClass()
   $('#message').addClass('failure')
 }
+
+const gameInfo = function (responseData) {
+  const numGames = responseData.games.length
+
+  $('#message').text('Number of games played = ' + numGames)
+  $('#message').removeClass()
+  $('#message').addClass('success')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -99,5 +113,6 @@ module.exports = {
   onSuccessfulMove,
   onFailedMove,
   changePasswordSuccess,
-  changePasswordFailure
+  changePasswordFailure,
+  gameInfo
 }
