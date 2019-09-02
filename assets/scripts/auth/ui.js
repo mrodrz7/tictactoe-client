@@ -26,7 +26,6 @@ const signInSuccess = function (data) {
 }
 
 const signOutSuccess = function (data) {
-  console.log('signed out success: store.user is', store.user)
   store.user = null
   $('#message').text('Signed out successfully')
   $('#message').removeClass()
@@ -54,7 +53,6 @@ const signInFailure = function () {
 
 const createGameSuccess = function (data) {
   store.game = data.game
-  console.log(data.game)
   $('.column').text('')
   $('#showgrid').show()
   $('#winner').text('')
@@ -73,7 +71,6 @@ const createGameFailure = function () {
 
 const onSuccessfulMove = function (data) {
   store.game = data.game
-  console.log(data.game)
 }
 
 const onFailedMove = function () {

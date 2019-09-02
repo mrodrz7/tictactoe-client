@@ -5,10 +5,8 @@ const ui = require('./ui.js')
 
 const onSignUp = function (event) {
   event.preventDefault()
-  console.log(event)
   // get form data
   const data = getFormFields(event.target)
-  console.log('sign up data is', data)
   // make the api call
   api.signUp(data)
     .then(function (data) {
@@ -19,10 +17,7 @@ const onSignUp = function (event) {
 
 const onSignIn = function (event) {
   event.preventDefault()
-  console.log('submitted sign-in!')
-
   const data = getFormFields(event.target)
-  console.log('sign in data is', data)
 
   api.signIn(data)
     .then(ui.signInSuccess)
@@ -88,7 +83,6 @@ const onClick = function () {
     $(this).text(store.playerOne) // this element specifically
     const currentIndex = $(this).attr('id')
     store.gridArray[currentIndex] = store.playerOne
-    console.log(store.gridArray)
     winner()
     api.makeMove(store.playerOne, currentIndex)
       .then(ui.onSuccessfulMove)
