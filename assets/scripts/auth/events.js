@@ -50,6 +50,13 @@ const onCreateGame = function (event) {
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
 }
+
+const onGameStats = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.gameStats(data.game)
+    .then(ui.gameInfo)
+}
 // Game Events below
 // playerOne can be reassigned
 store.gridArray = ['', '', '', '', '', '', '', '', '']
@@ -105,7 +112,7 @@ const winner = function () {
   } else if (!store.gridArray.some(function (item) {
     return item === ''
   })) {
-    $('#winner').text('Draw!')
+    $('#winner').text('Drawvbvbvbv!')
     store.gameOver = true
   }
 }
@@ -133,5 +140,6 @@ module.exports = {
   onSignOut,
   onChangePassword,
   onClick,
-  onCreateGame
+  onCreateGame,
+  onGameStats
 }

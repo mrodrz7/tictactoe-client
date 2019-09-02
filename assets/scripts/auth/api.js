@@ -50,6 +50,17 @@ const changePassword = function (data) {
   })
 }
 
+const gameStats = function () {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {}
+  })
+}
+
 const createGame = function () {
   return $.ajax({
     url: config.apiUrl + '/games',
@@ -86,5 +97,6 @@ module.exports = {
   signOut,
   changePassword,
   createGame,
-  makeMove
+  makeMove,
+  gameStats
 }
