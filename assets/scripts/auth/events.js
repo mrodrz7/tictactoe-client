@@ -28,7 +28,7 @@ const onSignOut = function (event) {
   event.preventDefault()
   api.signOut()
     .then(ui.signOutSuccess)
-    .catch(ui.onSignInFailure)
+    .catch(ui.onSignOutFailure)
 }
 
 const onChangePassword = function (event) {
@@ -105,14 +105,14 @@ const winner = function () {
       (store.gridArray[0] && store.gridArray[0] === store.gridArray[4] && store.gridArray[0] === store.gridArray[8]) ||
       (store.gridArray[2] && store.gridArray[2] === store.gridArray[4] && store.gridArray[2] === store.gridArray[6])
   ) {
-    $('#winner').text(store.playerOne + ' is the winner!')
+    $('#winner').text(store.playerOne + ' is the winner! Click LETS PLAY to try again!')
     store.gameOver = true
     $('#winner').css('color', 'green')
     $('#message').text('')
   } else if (!store.gridArray.some(function (item) {
     return item === ''
   })) {
-    $('#winner').text('Draw!')
+    $('#winner').text('Draw! Click LETS PLAY to try again!')
     $('#winner').css('color', 'blue')
     store.gameOver = true
     $('#message').text('')
