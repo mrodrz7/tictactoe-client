@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Martin's Tic Tac Toe</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <link rel = "stylesheet" type = "text/css" href = "assets/styles/index.css" />
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <h1>Martin's Tic Tac Toe Game</h1>
+
+      <div id="message"></div>
+      <form id="sign-up" class="border">
+      <fieldset>
+        <legend>Create Username</legend>
+        <input type="text" name="credentials[email]" placeholder="Username">
+        <input type="password" name="credentials[password]" placeholder="Password">
+        <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+        <button class="create">Sign Up!</button>
+      </fieldset>
+      </form>
+
+    <form id="sign-in" class="border">
+      <fieldset>
+        <legend>Sign-In!</legend>
+        <input type="text" name="credentials[email]" placeholder="Username">
+        <input type="password" name="credentials[password]" placeholder="Password">
+        <button class="login">Sign In!</button>
+    </fieldset>
+    </form>
+      <hr>
+    <form id="change-password" class="border">
+      <fieldset>
+        <legend>Change Password</legend>
+        <input type="password" name="passwords[old]" placeholder="Current Password">
+        <input type="password" name="passwords[new]" placeholder="New Password">
+        <button class="reset">Reset</button>
+      </fieldset>
+    </form>
+    <hr>
+    <form id="create-game">
+      <legend>New Game</legend>
+      <button class="new-game">Let's Play</button>
+    </form>
+    <hr>
+
+    <form id="game-stats">
+      <button class="game-info">Games Played</button>
+    </form>
+
+    <hr>
+
+      <div id="winner"></div>
+      <div id="showgrid">
+        <div class="row">
+          <div id="0" class="column"></div>
+          <div id="1" class="column"></div>
+          <div id="2" class="column"></div>
+        </div>
+        <div class="row">
+          <div id="3" class="column"></div>
+          <div id="4" class="column"></div>
+          <div id="5" class="column"></div>
+        </div>
+        <div class="row">
+          <div id="6" class="column"></div>
+          <div id="7" class="column"></div>
+          <div id="8" class="column"></div>
+        </div>
+      </div>
+      <hr>
+    <form id="sign-out">
+      <fieldset>
+        <legend>End Game?</legend>
+        <button class="end">Sign Out</button>
+      </fieldset>
+    </form>
+  </body>
+</html>
