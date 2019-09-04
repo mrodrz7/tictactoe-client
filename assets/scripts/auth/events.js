@@ -72,8 +72,10 @@ store.playerOne = 'X'
 const changePlayer = function () {
   if (store.playerOne === 'X') {
     store.playerOne = 'O'
+    $('#message').text(store.playerOne + "'s turn")
   } else if (store.playerOne === 'O') {
     store.playerOne = 'X'
+    $('#message').text(store.playerOne + "'s turn")
   }
 }
 
@@ -87,7 +89,9 @@ const onClick = function () {
     api.makeMove(store.playerOne, currentIndex)
       .then(ui.onSuccessfulMove)
       .catch(ui.onFailedMove)
-    changePlayer()
+    if (!store.gameOver) {
+      changePlayer()
+    }
   }
 }
 
@@ -103,11 +107,15 @@ const winner = function () {
   ) {
     $('#winner').text(store.playerOne + ' is the winner!')
     store.gameOver = true
+    $('#winner').css('color', 'green')
+    $('#message').text('')
   } else if (!store.gridArray.some(function (item) {
     return item === ''
   })) {
     $('#winner').text('Draw!')
+    $('#winner').css('color', 'blue')
     store.gameOver = true
+    $('#message').text('')
   }
 }
 /*
